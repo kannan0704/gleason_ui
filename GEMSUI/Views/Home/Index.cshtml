@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "GEMS Cloud Web Application - Login Page";
+    Layout = null;
+}
+@model Login
+<html>
+<head>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.rtl.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="content" class="flex">
+        <div class="" style="background-image:url('images/login.jpg');height:100%;">
+            <div class="page-content page-container" id="page-content">
+                <div class="padding">
+                    <div class="row">
+                        <div class="col-md-3">&nbsp;</div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header"><strong>Login to your account</strong></div>
+                                <div class="card-body">
+                                    @if (TempData["Error"] != null)
+                                    {
+                                        <span class="text-danger">@TempData["Error"] </span>
+                                    }
+                                    <form asp-action="Login" asp-controller="Home">
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                        <div class="form-group">
+                                            <label class="text-muted" for="exampleInputEmail1">Email address</label>
+                                            <input type="text" class="form-control" asp-for="@Model.Username" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Username" required>
+                                            <span asp-validation-for="Username" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="text-muted" for="exampleInputPassword1">Password</label>
+                                            <input type="password" class="form-control" asp-for="@Model.Password" id="exampleInputPassword1" placeholder="Password" required>
+                                            <span asp-validation-for="Password" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="form-check"><input type="checkbox" class="form-check-input"><label class="form-check-label">Check me out</label></div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Login</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">&nbsp;</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.esm.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.esm.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+</body>
+</html>

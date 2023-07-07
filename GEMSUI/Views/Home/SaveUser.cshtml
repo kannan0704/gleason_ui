@@ -1,0 +1,87 @@
+﻿@model GEMSUI.Models.User
+
+@{
+    ViewData["Title"] = "GEMS Cloud Web Application - Save User";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Save User</h4>
+<hr />
+<div class="col-md-12">
+    <form asp-action="SaveUser" asp-controller="Home">
+        <div class="col-md-6">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input type="hidden" asp-for="UserId" />
+                <label asp-for="Customer" class="control-label"></label>
+                <select asp-for="Customer" class="form-control">
+                    <option value="Customer1">Customer1</option>
+                    <option value="Customer2">Customer2</option>
+                </select>
+                <span asp-validation-for="Customer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" type="text" placeholder="Enter First Name" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" placeholder="Enter Last Name" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="TrialUser" /> @Html.DisplayNameFor(model => model.TrialUser)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" type="email" placeholder="Enter Email Address" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Username" class="control-label"></label>
+                <input asp-for="Username" class="form-control" placeholder="Enter Username" type="text" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" type="password" placeholder="Enter Username" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Roles" class="control-label"></label>
+                <fieldset>
+                    <input checked="@Model.Roles" type="checkbox" name="rolelist" />Global Gleason Admin
+                    <br />
+                    <input checked="@Model.Roles" type="checkbox" name="rolelist" />User
+                    <br />
+                    <input checked="@Model.Roles" type="checkbox" name="rolelist" />Customer Admin
+                    <br />
+                    <input checked="@Model.Roles" type="checkbox" name="rolelist" />Gleason Regional Sales Manager
+                    <br />
+                    <input checked="@Model.Roles" type="checkbox" name="rolelist" />Gleason Internal Sales
+                    <br />
+                    <input checked="@Model.Roles" type="checkbox" name="rolelist" />Gleason Engineer/Service Engineer
+                    <br />
+                </fieldset>
+                <span asp-validation-for="Roles" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </div>
+    </form>
+</div>
+
+<div>
+    <a asp-action="Users" asp-controller="Home">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
